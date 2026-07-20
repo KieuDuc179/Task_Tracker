@@ -1,8 +1,8 @@
 import React from 'react';
-import './TaskItem.css';
+import '../css/TaskItem.css';
 
-function TaskItemFunctional({ task }) {
-  const { title, description, status, dueDate } = task;
+function TaskItemFunctional({ task, onToggleStatus, onDelete }) {
+  const { id, title, description, status, dueDate } = task;
   return (
     <div className="task-item">
       <h5>{title}</h5>
@@ -10,7 +10,13 @@ function TaskItemFunctional({ task }) {
       <span className={`badge ${status === 'done' ? 'bg-success' : 'bg-warning'}`}>
         {status}
       </span>
-      <small className="text-muted d-block">Due: {dueDate}</small>
+      <small className="text-muted d-block mb-2">Due: {dueDate}</small>
+      <button className="btn btn-sm btn-outline-primary me-2" onClick={() => onToggleStatus(id)}>
+        Toggle Status
+      </button>
+      <button className="btn btn-sm btn-outline-danger" onClick={() => onDelete(id)}>
+        Delete
+      </button>
     </div>
   );
 }
