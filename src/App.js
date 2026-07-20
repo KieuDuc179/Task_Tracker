@@ -1,20 +1,24 @@
-import TaskItemFunctional from './components/TaskItemFunctional';
-import TaskItemClass from './components/TaskItemClass';
-
-const sampleTask = {
-  id: 1,
-  title: 'Học React Router',
-  description: 'Hoàn thành LO5',
-  status: 'pending',
-  dueDate: '2026-06-20',
-};
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+import AppNavbar from './components/AppNavbar';
+import Home from './pages/Home';
+import Feature from './pages/Feature';
+import About from './pages/About';
 
 function App() {
   return (
-    <div className="App">
-      <TaskItemFunctional task={sampleTask} />
-      <TaskItemClass task={sampleTask} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <AppNavbar />
+        <Container>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/feature" element={<Feature />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </Container>
+      </div>
+    </BrowserRouter>
   );
 }
 
