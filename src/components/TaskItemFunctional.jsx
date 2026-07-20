@@ -1,4 +1,5 @@
 import React from 'react';
+import './TaskItem.css';
 
 function TaskItemFunctional({ task }) {
   const { title, description, status, dueDate } = task;
